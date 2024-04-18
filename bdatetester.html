@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bangla Date Converter</title>
+    <style>
+      #banglaDateOutput {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bangla Date Converter</h1>
+    <label for="gregorianDate">Select a Gregorian date:</label>
+    <input type="date" id="gregorianDate" onchange="showBanglaDate()" />
+    <input type="time" id="gregTime" />
+
+    <h2>Show Bangla Date in:</h2>
+    <label for="enCheckbox">
+      <input type="checkbox" id="enCheckbox" onchange="showBanglaDate()" />
+      English
+    </label>
+    <label for="bnCheckbox">
+      <input type="checkbox" id="bnCheckbox" onchange="showBanglaDate()" />
+      Bengali
+    </label>
+    <br />
+    <label for="ddCheckbox">
+      <input type="checkbox" id="ddCheckbox" onchange="showBanglaDate()" /> Date
+    </label>
+    <label for="mmCheckbox">
+      <input type="checkbox" id="mmCheckbox" onchange="showBanglaDate()" />
+      Month
+    </label>
+    <label for="yyCheckbox">
+      <input type="checkbox" id="yyCheckbox" onchange="showBanglaDate()" /> Year
+    </label>
+    <br />
+    <label for="dayNameCheckbox">
+      <input type="checkbox" id="dayNameCheckbox" onchange="showBanglaDate()" />
+      Day Name
+    </label>
+
+    <div id="banglaDateOutput"></div>
+
+    <script src="banglaDate.js"></script>
+    <script>
+      function showBanglaDate() {
+        const gregorianDateInput =
+          document.getElementById("gregorianDate").value;
+        const enCheckbox = document.getElementById("enCheckbox").checked;
+        const bnCheckbox = document.getElementById("bnCheckbox").checked;
+        const ddCheckbox = document.getElementById("ddCheckbox").checked;
+        const mmCheckbox = document.getElementById("mmCheckbox").checked;
+        const yyCheckbox = document.getElementById("yyCheckbox").checked;
+        const dayNameCheckbox =
+          document.getElementById("dayNameCheckbox").checked;
+
+        const banglaDate = new BanglaDate({ date: gregorianDateInput });
+
+        let options = {
+          en: enCheckbox,
+          dayName: dayNameCheckbox,
+          dd: ddCheckbox,
+          monthName: mmCheckbox,
+        };
+
+        const outputDiv = document.getElementById("banglaDateOutput");
+        outputDiv.innerHTML = banglaDate.toString(options);
+      }
+      // const dateString1 = "2024-04-20T13:45:30+05:30";
+      // const dateString2 = "2024-04-20T13:45:30Z";
+      // const dateString3 = "2024-04-20T13:45:30-08:00";
+      // const dateString4 = "2024-04-20";
+      // const dateString5 = "2024-04";
+      // const dateString6 = "2024";
+      // const dateString7 = "04/20/2024";
+
+      // console.log(parseCustomDate(dateString1));
+      // console.log(parseCustomDate(dateString2));
+      // console.log(parseCustomDate(dateString3));
+      // console.log(parseCustomDate(dateString4));
+      // console.log(parseCustomDate(dateString5));
+      // console.log(parseCustomDate(dateString6));
+      // console.log(parseCustomDate(dateString7));
+
+      // test
+
+      // for (let i = 0; i < 55; i++) {
+      //   let date = Math.round(Math.random() * 30 + 1);
+      //   let month = Math.round(Math.random() * 11 + 1);
+      //   let year = Math.round(Math.random() * 200 + 1300);
+
+      //   let takenBdate = new BanglaDate({
+      //     date: `${year}-${month}-${date}`,
+      //     gr: false,
+      //   });
+
+      //   let engconv = new Date(takenBdate.getTime()).toDateString();
+      //   let convertedLater = new BanglaDate({ date: `${engconv}` }).toString({
+      //     en: true,
+      //     monthName: false,
+      //   });
+
+      //   cv(new CustomDate(`${year}-${month}-${date}`).parse()[0] + "---");
+      //   console.log(new CustomDate(`${year}-${month}-${date}`).splitDate());
+
+      //   cv(
+      //     `${date}/${month}/${year}is taken. new: ${takenBdate.toString({
+      //       en: true,
+      //       monthName: false,
+      //     })} en: ${engconv} again bn:${convertedLater}\n\n`
+      //   );
+      // }
+
+      // function cv(str) {
+      //   document.body.innerText += str;
+      // }
+    </script>
+  </body>
+</html>
