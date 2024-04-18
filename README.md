@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # BanglaDate Library
 
 BanglaDate is a JavaScript library designed to use Bangla dates in JavaScript and web development.
@@ -56,7 +55,3 @@ This library is provided under the MIT License, allowing free use and distributi
   Undergraduate Student of Physics  
   Dhaka College  
   [Facebook Profile](https://www.facebook.com/jahiSami)
-=======
-# banglaDate
-BanglaDate is a JavaScript library designed to use Bangla dates in JavaScript and web development.
->>>>>>> 47ba873 (Initial commit)
