@@ -1,6 +1,6 @@
 # BanglaDate Library
 
-The BanglaDate library is designed to simplify the use of Bangla dates in JavaScript and web development.
+BanglaDate is a JavaScript library designed to use Bangla dates in JavaScript and web development.
 
 ## Features
 
