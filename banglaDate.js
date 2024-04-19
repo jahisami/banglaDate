@@ -306,9 +306,12 @@ class BanglaDate {
 
     let str = `${time.timeName} `;
     str += `${time.hours}:${time.minutes}`;
-    str += s ? `:${time.seconds}` : ``;
 
-    if (detailed) {
+    str = en ? `${time.hours}:${time.minutes}` : str;
+    str += s ? `:${time.seconds}` : ``;
+    str += en ? `${time.timeName} ` : "";
+
+    if (detailed && !en) {
       str = `${time.timeName} `;
       str += `${time.hours} টা বেজে ${time.minutes} মিনিট`;
       str += s ? ` ${time.seconds} সেকেন্ড` : ``;
