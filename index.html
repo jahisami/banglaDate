@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bangla Date Library</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+      body {
+        font-family: "Roboto", "Noto Serif Bengali";
+        background-color: #fafafa;
+      }
+      #banglaDateOutput {
+        margin-top: 20px;
+        font-size: 18px;
+        border: 2px solid #fefefe;
+        border-radius: 1em;
+        padding: 1em;
+        box-shadow: 0 1em 1.2em rgba(0, 36, 68, 0.05);
+        max-width: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bangla Date Library</h1>
+    <label for="gregorianDate">Select a Gregorian date:</label>
+    <input type="date" id="gregorianDate" onchange="showBanglaDate()" />
+    <input type="time" id="gregTime" onchange="showBanglaDate()" />
+
+    <br />
+    <h3>Show Bangla Date in:</h3>
+    <label for="lang"
+      >Language:
+      <label for="enCheckbox">
+        <input
+          type="radio"
+          id="enCheckbox"
+          name="lang"
+          onchange="showBanglaDate()"
+        />
+        English
+      </label>
+      <label for="bnCheckbox">
+        <input
+          type="radio"
+          name="lang"
+          id="bnCheckbox"
+          onchange="showBanglaDate()"
+        />
+        Bengali
+      </label>
+    </label>
+    <br />
+    <br />
+
+    <label for="dateOptions">
+      Date Options:
+      <label for="ddCheckbox">
+        <input type="checkbox" id="ddCheckbox" onchange="showBanglaDate()" /> DD
+      </label>
+      <label for="mmCheckbox">
+        <input type="checkbox" id="mmCheckbox" onchange="showBanglaDate()" />
+        Month
+      </label>
+      <br />
+      <label for="dayNameCheckbox" style="margin-left: 7.5em">
+        <input
+          type="checkbox"
+          id="dayNameCheckbox"
+          onchange="showBanglaDate()"
+        />
+        Day Name
+      </label>
+    </label>
+    <br /><br />
+    <label for="timeOptions">
+      Time Options:
+      <label for="ttCheckbox">
+        <input type="checkbox" id="ttCheckbox" onchange="showBanglaDate()" /> tt
+      </label>
+      <label for="sCheckbox">
+        <input type="checkbox" id="sCheckbox" onchange="showBanglaDate()" />
+        Second
+      </label>
+      <br />
+      <label for="detailedCheckbox" style="margin-left: 7.5em">
+        <input
+          type="checkbox"
+          id="detailedCheckbox"
+          onchange="showBanglaDate()"
+        />
+        Detailed
+      </label>
+    </label>
+    <div id="banglaDateOutput"></div>
+
+    <script src="banglaDate copy.js"></script>
+    <script>
+      function showBanglaDate() {
+        let gregorianDateInput = document.getElementById("gregorianDate").value;
+        gregorianDateInput += document.getElementById("gregTime").value
+          ? `T${document.getElementById("gregTime").value}`
+          : "";
+        const enCheckbox = document.getElementById("enCheckbox").checked;
+        const bnCheckbox = document.getElementById("bnCheckbox").checked;
+        const ddCheckbox = document.getElementById("ddCheckbox").checked;
+        const mmCheckbox = document.getElementById("mmCheckbox").checked;
+        const dayNameCheckbox =
+          document.getElementById("dayNameCheckbox").checked;
+
+        const ttCheckbox = document.getElementById("ttCheckbox").checked;
+        const sCheckbox = document.getElementById("sCheckbox").checked;
+        const detailedCheckbox =
+          document.getElementById("detailedCheckbox").checked;
+
+        const banglaDate = new BanglaDate({ date: gregorianDateInput });
+
+        let dateOptions = {
+          en: enCheckbox,
+          dayName: dayNameCheckbox,
+          dd: ddCheckbox,
+          monthName: mmCheckbox,
+        };
+
+        let timeOptions = {
+          en: enCheckbox,
+          tt: ttCheckbox,
+          s: sCheckbox,
+          detailed: detailedCheckbox,
+        };
+
+        const outputDiv = document.getElementById("banglaDateOutput");
+        outputDiv.innerHTML = banglaDate.toString(dateOptions);
+        outputDiv.innerHTML += " ";
+        outputDiv.innerHTML += banglaDate.toTimeString(timeOptions);
+      }
+    </script>
+  </body>
+</html>
