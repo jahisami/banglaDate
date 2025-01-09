@@ -291,6 +291,7 @@ class BanglaDate {
     }
 
     time.hours -= time.hours > 12 ? 12 : 0;
+    time.hours = time.hours === 0 ? 12 : time.hours;
 
     if (tt) {
       time.hours = time.hours < 10 ? `0${time.hours}` : `${time.hours}`;
@@ -405,8 +406,6 @@ class CustomDate {
     this.destructured = this.splitDate(this.dateString);
     this.isbefore = this.destructured.year < 1426;
     this.parsed = {};
-    console.log(this.destructured);
-    console.log(this.isbefore);
 
     // year calculation
     if (this.isbefore) {
@@ -422,8 +421,6 @@ class CustomDate {
           ? this.destructured.year + 593
           : this.destructured.year + 594;
     }
-
-    console.log(this.parsed);
 
     this.isleap =
       (this.parsed.year % 4 === 0 && this.parsed.year % 100 !== 0) ||
@@ -527,4 +524,4 @@ function padZero(num) {
   return toret;
 }
 
-// export default BanglaDate;
+export default BanglaDate;
