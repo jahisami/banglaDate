@@ -22,7 +22,7 @@ npm install bangla-date
 
 ### Using a CDN
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bangla-date/dist/bangla-date.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/jahisami/banglaDate@main/banglaDate.js"></script>
 ```
 
 
